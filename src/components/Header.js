@@ -15,25 +15,26 @@ function Header() {
 
   return (
     <header className="header">
-      <Link to="/profile">
-        <img src={ profileIcon } alt="profile" data-testid="profile-top-btn" />
-      </Link>
-      {
-        (pathname === '/drinks' || pathname === '/meals') && (
-          <button type="button" onClick={ showsearchBtn } className="lupa">
-            <img src={ searchIcon } alt="seacrh" data-testid="search-top-btn" />
-          </button>
-        )
-      }
+      <div className='header-content'>
+        {
+          (pathname === '/drinks' || pathname === '/meals') && (
+            <button type="button" onClick={ showsearchBtn } className="lupa">
+              <img src={ searchIcon } alt="seacrh" data-testid="search-top-btn" />
+            </button>
+          )
+        }
+        <h2 data-testid="page-title">
+          {
+            pageTitle.map((str) => (`${str[0].toUpperCase() + str.substring(1)} `))
+          }
+        </h2>
+        <Link to="/profile">
+          <img src={ profileIcon } alt="profile" data-testid="profile-top-btn" />
+        </Link>
+      </div>
       {
         searchBtn && <SearchBar />
       }
-
-      <h2 data-testid="page-title">
-        {
-          pageTitle.map((str) => (`${str[0].toUpperCase() + str.substring(1)} `))
-        }
-      </h2>
     </header>
   );
 }
