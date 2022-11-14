@@ -63,7 +63,7 @@ function Recipes() {
             data-testid="All-category-filter"
           />
         </div>
-        <div className="receitas">
+        <div className="recipes">
           {
             resultsMap.map((result, index) => (
               <div

@@ -117,9 +117,19 @@ h2 { margin: 5px; }
   width: 100%;
 }
 
-.receitas {
-  margin-bottom: 60px;
+.recipes {
+  margin-bottom: 70px;
   margin-top: 120px;
+}
+
+.card-recipe {
+  margin: auto;
+  max-width: 650px;
+  width: 90%;
+}
+
+.card-recipe a {
+  text-decoration: none;
 }
 
 .input {
@@ -147,10 +157,10 @@ h2 { margin: 5px; }
 .img-recipes {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  padding-left: 10px;
-  padding-right: 10px;
+  /* display: flex;
+  flex-direction: column; */
+  /* padding-left: 10px;
+  padding-right: 10px; */
   width: 100%;
 }
 
@@ -206,8 +216,6 @@ footer a {
   display: flex;
   padding: 0 px;
   width: 100%;
-
-
 }
 
 .meals > .logo {
@@ -262,10 +270,6 @@ footer a {
 }
 
 .suggestions {
-
-  /* overflow: auto; */
-
-  /* white-space: nowrap; */
   display: inline-block;
   margin-bottom: 10%;
 }
@@ -276,17 +280,16 @@ footer a {
 }
 
 .recipe-name {
+  align-items: center;
   background-color: rgb(14, 196, 165);
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  box-shadow: 0 px -1px 10px black;
+  /* box-shadow: 0 -1px 10px black; */
   color: black;
   display: flex;
   height: 40px;
   justify-content: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  position: relative;
+  margin-top: 0;
   z-index: -2;
 }
 
