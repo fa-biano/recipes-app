@@ -45,7 +45,7 @@ function DoneRecipes() {
   return (
     <div>
       <Header />
-      <div>
+      <div className='done-recipes-filter'>
         <button
           type="button"
           data-testid="filter-by-all-btn"
@@ -70,59 +70,60 @@ function DoneRecipes() {
           Drinks
         </button>
       </div>
-      { filteredDoneRecipes.length === 0 && <p>No recipe has been done yet...</p>}
-      {(filteredDoneRecipes.length > 0) && filteredDoneRecipes.map((e, index) => (
-        <div key={ e.id }>
-          <Link to={ `/${e.type}s/${e.id}` }>
-            <img
-              src={ e.image }
-              data-testid={ `${index}-horizontal-image` }
-              alt="recipe"
-              width="300px"
-            />
-          </Link>
-          {
-            e.type === 'meal'
-              ? (
-                <h4 data-testid={ `${index}-horizontal-top-text` }>
-                  {`${e.nationality} - ${e.category}`}
-                </h4>
-              )
-              : (
-                <h4 data-testid={ `${index}-horizontal-top-text` }>
-                  {`${e.category} - ${e.alcoholicOrNot}`}
-                </h4>
-              )
-          }
-          <Link to={ `/${e.type}s/${e.id}` }>
-            <h3 data-testid={ `${index}-horizontal-name` }>
-              {e.name}
-            </h3>
-          </Link>
-
-          <p data-testid={ `${index}-horizontal-done-date` }>
-            {e.doneDate}
-          </p>
-          <button
-            type="button"
-            onClick={ () => getCopiedLink(e.type, e.id) }
-          >
-            <img
-              src={ shareIcon }
-              alt="shareBtn"
-              data-testid={ `${index}-horizontal-share-btn` }
-            />
-          </button>
-          {
-            (e.tags.filter((_tag, indiceTag) => indiceTag < 2)
-              .map((tag) => (
-                <p data-testid={ `${index}-${tag}-horizontal-tag` } key={ tag }>
-                  {tag}
-                </p>
-              )))
-          }
-        </div>
-      ))}
+      <div className='done-recipes-container'>
+        { filteredDoneRecipes.length === 0 && <p>No recipe has been done yet...</p>}
+        {(filteredDoneRecipes.length > 0) && filteredDoneRecipes.map((e, index) => (
+          <div key={ e.id } className='done-recipe-card'>
+            <Link to={ `/${e.type}s/${e.id}` }>
+              <h3 data-testid={ `${index}-horizontal-name` }>
+                {e.name}
+              </h3>
+              <img
+                src={ e.image }
+                data-testid={ `${index}-horizontal-image` }
+                alt="recipe"
+                width="300px"
+                className='profile-img-recipe'
+              />
+            </Link>
+            <button
+              type="button"
+              onClick={ () => getCopiedLink(e.type, e.id) }
+              className='profile-fav-btn'
+            >
+              <img
+                src={ shareIcon }
+                alt="shareBtn"
+                data-testid={ `${index}-horizontal-share-btn` }
+              />
+            </button>
+            {
+              e.type === 'meal'
+                ? (
+                  <h4 data-testid={ `${index}-horizontal-top-text` }>
+                    {`${e.nationality} - ${e.category}`}
+                  </h4>
+                )
+                : (
+                  <h4 data-testid={ `${index}-horizontal-top-text` }>
+                    {`${e.category} - ${e.alcoholicOrNot}`}
+                  </h4>
+                )
+            }
+            {
+              (e.tags.filter((_tag, indiceTag) => indiceTag < 2)
+                .map((tag) => (
+                  <p data-testid={ `${index}-${tag}-horizontal-tag` } key={ tag }>
+                    {tag}
+                  </p>
+                )))
+            }
+            <p data-testid={ `${index}-horizontal-done-date` }>
+              {`Done Date: ${e.doneDate}`}
+            </p>
+          </div>
+        ))}
+      </div>
       {
         hasCopy && (
           <div>

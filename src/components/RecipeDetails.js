@@ -74,6 +74,7 @@ function RecipesDetails() {
   return (
     <div>
       <div className="recipe-details">
+        <h2>Recipe Details</h2>
         {
           selectedRecipe.map((recipe) => (
             <div key={ recipe.idMeal ? recipe.idMeal : recipe.idDrink }>
