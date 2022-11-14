@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 import { clearEmail, getEmail } from '../services/userStorage';
 
 function Profile() {
-  /* const [email, setEmail] = useState([]); */
   const { email } = getEmail();
   const history = useHistory();
 
@@ -19,7 +18,6 @@ function Profile() {
     clearEmail();
     history.push('/');
   };
-  console.log(email);
   return (
     <div>
       <Header />
@@ -27,27 +25,30 @@ function Profile() {
         <h3 data-testid="profile-email">
           {email}
         </h3>
-        <button
-          type="button"
-          data-testid="profile-done-btn"
-          onClick={ handleDone }
-        >
-          Done Recipes
-        </button>
-        <button
-          type="button"
-          data-testid="profile-favorite-btn"
-          onClick={ handleFavorite }
-        >
-          Favorite Recipes
-        </button>
-        <button
-          type="button"
-          data-testid="profile-logout-btn"
-          onClick={ handleLogout }
-        >
-          Logout
-        </button>
+        <nav className='profile-nav-container'>
+          <p>Navigate to:</p>
+          <button
+            type="button"
+            data-testid="profile-done-btn"
+            onClick={ handleDone }
+          >
+            Done Recipes
+          </button>
+          <button
+            type="button"
+            data-testid="profile-favorite-btn"
+            onClick={ handleFavorite }
+          >
+            Favorite Recipes
+          </button>
+          <button
+            type="button"
+            data-testid="profile-logout-btn"
+            onClick={ handleLogout }
+          >
+            Logout
+          </button>
+        </nav>
       </div>
       <Footer />
     </div>
