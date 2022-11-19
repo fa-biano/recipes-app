@@ -51,7 +51,7 @@ function FavoriteRecipes() {
   return (
     <div>
       <Header />
-      <div>
+      <div className='done-recipes-filter'>
         <button
           type="button"
           data-testid="filter-by-all-btn"
@@ -76,65 +76,64 @@ function FavoriteRecipes() {
           Drinks
         </button>
       </div>
-      {(filteredFavoriteRecipes.length > 0) && filteredFavoriteRecipes.map((e, index) => (
-        <div key={ e.id }>
-          <Link to={ `/${e.type}s/${e.id}` }>
-            <img
-              src={ e.image }
-              data-testid={ `${index}-horizontal-image` }
-              alt="recipe"
-              width="300px"
-            />
-          </Link>
-          {
-            e.type === 'meal'
-              ? (
-                <h4 data-testid={ `${index}-horizontal-top-text` }>
-                  {`${e.nationality} - ${e.category}`}
-                </h4>
-              )
-              : (
-                <h4 data-testid={ `${index}-horizontal-top-text` }>
-                  {`${e.category} - ${e.alcoholicOrNot}`}
-                </h4>
-              )
-          }
-          <Link to={ `/${e.type}s/${e.id}` }>
-            <h3 data-testid={ `${index}-horizontal-name` }>
-              {e.name}
-            </h3>
-          </Link>
+      <div className='done-recipes-container'>
+        {(filteredFavoriteRecipes.length > 0) && filteredFavoriteRecipes.map((e, index) => (
+          <div key={ e.id } className='done-recipe-card'>
+            <Link to={ `/${e.type}s/${e.id}` }>
+              <h3 data-testid={ `${index}-horizontal-name` }>
+                {e.name}
+              </h3>
+              <img
+                src={ e.image }
+                data-testid={ `${index}-horizontal-image` }
+                alt="recipe"
+                width="300px"
+              />
+            </Link>
+            <button
+              type="button"
+              onClick={ () => getCopiedLink(e.type, e.id) }
+            >
+              <img
+                src={ shareIcon }
+                alt="shareBtn"
+                data-testid={ `${index}-horizontal-share-btn` }
+                width="30px"
+              />
+            </button>
 
-          <p data-testid={ `${index}-horizontal-done-date` }>
-            {e.doneDate}
-          </p>
-          <button
-            type="button"
-            onClick={ () => getCopiedLink(e.type, e.id) }
-          >
-            <img
-              src={ shareIcon }
-              alt="shareBtn"
-              data-testid={ `${index}-horizontal-share-btn` }
-              width="30px"
-            />
-          </button>
-
-          <button
-            type="button"
-            onClick={ () => removeFavoriteRecipe(e.id) }
-          >
-            <img
-              src={ blackHeartIcon }
-              alt="favorite"
-              data-testid={ `${index}-horizontal-favorite-btn` }
-            />
-          </button>
-        </div>
-      ))}
+            <button
+              type="button"
+              onClick={ () => removeFavoriteRecipe(e.id) }
+            >
+              <img
+                src={ blackHeartIcon }
+                alt="favorite"
+                data-testid={ `${index}-horizontal-favorite-btn` }
+              />
+            </button>
+            {
+              e.type === 'meal'
+                ? (
+                  <h4 data-testid={ `${index}-horizontal-top-text` }>
+                    {`${e.nationality} - ${e.category}`}
+                  </h4>
+                )
+                : (
+                  <h4 data-testid={ `${index}-horizontal-top-text` }>
+                    {`${e.category} - ${e.alcoholicOrNot}`}
+                  </h4>
+                )
+            }
+            <p data-testid={ `${index}-horizontal-done-date` }>
+              {e.doneDate}
+            </p>
+          </div>
+        ))}
+      </div>
       {
         hasCopy && (
-          <div>
+          <div className='copy-msg-container'>
             <p>Link copied!</p>
             <button type="button" onClick={ () => setHasCopy(false) }>Ok</button>
           </div>

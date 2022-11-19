@@ -89,7 +89,7 @@ function DoneRecipes() {
             <button
               type="button"
               onClick={ () => getCopiedLink(e.type, e.id) }
-              className='profile-fav-btn'
+              // className='profile-fav-btn'
             >
               <img
                 src={ shareIcon }
@@ -126,7 +126,7 @@ function DoneRecipes() {
       </div>
       {
         hasCopy && (
-          <div>
+          <div className='copy-msg-container'>
             <p>Link copied!</p>
             <button type="button" onClick={ () => setHasCopy(false) }>Ok</button>
           </div>
