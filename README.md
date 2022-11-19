@@ -2,7 +2,7 @@
 Projeto realizado durante o curso de desenvolvimento web da Trybe no módulo Frontend
 
 ## :dizzy: Objetivo: 
-Criar um app de receitas com layout para smartphones, onde seja possível consultar receitas de comidas e bebidas, realizar filtros por ingredientes e acompanhar o progresso das receitas escolhidas.
+Criar um app de receitas, com layout para smartphones, onde seja possível consultar receitas de comidas e bebidas, realizar filtros por ingredientes e acompanhar o progresso das receitas escolhidas.
 
 ### Funcionalidades:
 * A aplicação acessa 2 APIs diferentes (Uma para comidas e outra para bebidas) e renderiza o resultado da consulta na tela
