@@ -12,6 +12,11 @@ function DoneRecipeBtn(props) {
   const saveDoneRecipes = () => {
     const allDone = getDoneRecipes();
 
+    let recipeTags = [];
+    if (selectedRecipe[0].strMeal && selectedRecipe[0].strTags != null) {
+      recipeTags = selectedRecipe[0].strTags.split(',')
+    }
+
     const recipe = {
       id: selectedRecipe[0].idMeal ? selectedRecipe[0].idMeal : selectedRecipe[0].idDrink,
       type: selectedRecipe[0].idMeal ? 'meal' : 'drink',
@@ -29,9 +34,7 @@ function DoneRecipeBtn(props) {
         ? selectedRecipe[0].strMealThumb
         : selectedRecipe[0].strDrinkThumb,
       doneDate: new Date().toISOString(),
-      tags: selectedRecipe[0].strMeal
-        ? selectedRecipe[0].strTags.split(',')
-        : [],
+      tags: recipeTags,
     };
 
     let updateAllDone;
