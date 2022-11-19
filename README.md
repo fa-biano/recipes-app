@@ -7,7 +7,7 @@ Criar um app de receitas, com layout para smartphones, onde seja possível consu
 ### Funcionalidades:
 * A aplicação acessa 2 APIs diferentes (Uma para comidas e outra para bebidas) e renderiza o resultado da consulta na tela
 * Ao escolher a receita é possível favoritar, compartilhar o link e iniciar o progresso
-* Na pagina de progresso cada ingrediente possui um checkbox para ser marcado conforme for utilizado na receita. Após utilizar todos os ingredientes, a receita é marcada como finalizada
+* Na página de progresso, cada ingrediente possui um checkbox para ser marcado conforme for utilizado na receita. Após utilizar todos os ingredientes, a receita é marcada como finalizada
 * Todas as receitas favoritadas e finalizadas podem ser acessadas pela página de perfil do usuário
 
 ## :fire: Tecnologias: 
