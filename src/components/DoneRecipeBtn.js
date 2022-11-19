@@ -65,7 +65,7 @@ function DoneRecipeBtn(props) {
 }
 
 DoneRecipeBtn.propTypes = {
-  ingredChecked: PropTypes.shape().isRequired,
+  ingredChecked: PropTypes.array.isRequired,
 };
 
 export default DoneRecipeBtn;

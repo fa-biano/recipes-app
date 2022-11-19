@@ -83,12 +83,11 @@ function ShareAndFavorite() {
   }, [pathname]);
 
   useEffect(() => {
-    // saveFavoriteRecipe();
     checkFavoriteRecipe();
   }, [checkFavoriteRecipe]);
 
   return (
-    <div>
+    <div className='shareBtn-FavBtn-container'>
       <button
         type="button"
         onClick={ () => getCopiedLink() }
@@ -98,7 +97,6 @@ function ShareAndFavorite() {
       <button
         type="button"
         onClick={ saveFavoriteRecipe }
-        // src={ hasFavorite ? blackHeartIcon : whiteHeartIcon }
       >
         {
           hasFavorite
@@ -108,7 +106,7 @@ function ShareAndFavorite() {
       </button>
       {
         hasCopy && (
-          <div>
+          <div className='copy-msg-container'>
             <p>Link copied!</p>
             <button type="button" onClick={ () => setHasCopy(false) }>Ok</button>
           </div>

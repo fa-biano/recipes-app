@@ -23,7 +23,6 @@ function StartRecipeBtn() {
     if (updateDoneRecipes !== null) {
       setGetDone(updateDoneRecipes);
       const finished = updateDoneRecipes.some((recipe) => recipe.id === recipeId);
-      console.log('finished', finished);
       setHasDone(finished);
     }
   }, [page, recipeId]);
@@ -62,7 +61,7 @@ function StartRecipeBtn() {
       }
       {
         done.some((recipe) => recipe.id === recipeId)
-          && <Link to={ `/${page}` }>Recipe Already Done</Link>
+          && <Link className="startRecipeBtn" to={ `/${page}` }>Recipe Already Done</Link>
       }
     </div>
   );

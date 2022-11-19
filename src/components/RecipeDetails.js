@@ -52,7 +52,6 @@ function RecipesDetails() {
     getRecipeIngredientsMeasures]);
 
   useEffect(() => {
-    // console.log('estou em recipe details');
     const fetchSuggestion = async () => {
       const sugMealsEndPoint = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
       const sugDrinksEndPoint = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
@@ -75,34 +74,36 @@ function RecipesDetails() {
     <div>
       <div className="recipe-details">
         <h2>Recipe Details</h2>
-        {
-          selectedRecipe.map((recipe) => (
-            <div key={ recipe.idMeal ? recipe.idMeal : recipe.idDrink }>
-              <h3
-                data-testid="recipe-title"
-              >
-                { recipe.strMeal ? recipe.strMeal : recipe.strDrink }
-              </h3>
-              <ShareAndFavorite />
-              <img
-                className="img-recipe-details"
-                src={ recipe.strMealThumb ? recipe.strMealThumb : recipe.strDrinkThumb }
-                alt="recipe"
-                data-testid="recipe-photo"
-                width="80%"
-              />
-              <p data-testid="recipe-category">
-                {
-                  recipe.strAlcoholic
-                    ? `${recipe.strCategory} ${recipe.strAlcoholic}`
-                    : recipe.strCategory
-                }
-              </p>
-            </div>
-          ))
-        }
+        <div className='recipes-details-container'>
+          {
+            selectedRecipe.map((recipe) => (
+              <div key={ recipe.idMeal ? recipe.idMeal : recipe.idDrink } className='done-recipe-card'>
+                <h3
+                  data-testid="recipe-title"
+                >
+                  { recipe.strMeal ? recipe.strMeal : recipe.strDrink }
+                </h3>
+                <img
+                  className="img-recipe-details"
+                  src={ recipe.strMealThumb ? recipe.strMealThumb : recipe.strDrinkThumb }
+                  alt="recipe"
+                  data-testid="recipe-photo"
+                  width="80%"
+                />
+                <ShareAndFavorite />
+                <p data-testid="recipe-category">
+                  {
+                    recipe.strAlcoholic
+                      ? `${recipe.strCategory} ${recipe.strAlcoholic}`
+                      : recipe.strCategory
+                  }
+                </p>
+              </div>
+            ))
+          }
+        </div>
 
-        <h3>Ingredients:</h3>
+        <h3 className='ingredients-title'>Ingredients:</h3>
         <div className="ingredients">
           {
             ingredients.map((ingredient, index) => (
@@ -117,7 +118,7 @@ function RecipesDetails() {
           }
         </div>
 
-        <h3>Intructions:</h3>
+        <h3 className='ingredients-title'>Intructions:</h3>
         {
           selectedRecipe.length > 0 && (
             <p
@@ -173,37 +174,6 @@ function RecipesDetails() {
           ))
         }
       </div>
-      {/* {
-        (!done && !inProgress)
-        // depois precisaremos verificar o id da comida ou bebida salvas no estado para fazer a renderização correta
-        // a renderização desse botão dependerá da vericação do localStorage, a lógica seguinte é provisória
-        && (
-          <div className="marginBtn">
-            <button
-              className="startRecipeBtn"
-              type="button"
-              data-testid="start-recipe-btn"
-              onClick={ () => setStartedRecipe(selectedRecipe) }
-            >
-              Start Recipe
-            </button>
-          </div>)
-      }
-      {
-        (!done && inProgress)
-        && (
-          <div className="marginBtn">
-            <Link to={ `${pathname}/in-progress` }>
-              <button
-                className="startRecipeBtn"
-                type="button"
-                data-testid="start-recipe-btn"
-              >
-                Continue Recipe
-              </button>
-            </Link>
-          </div>)
-      } */}
       <StartRecipeBtn />
     </div>
   );
