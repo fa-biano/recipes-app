@@ -391,6 +391,10 @@ h3 {
   margin-top: 110px;
 }
 
+.done-recipes-container p {
+  text-align: center;
+}
+
 .done-recipe-card {
   display: flex;
   flex-direction: column;

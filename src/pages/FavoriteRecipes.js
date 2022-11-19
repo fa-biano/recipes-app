@@ -77,6 +77,7 @@ function FavoriteRecipes() {
         </button>
       </div>
       <div className='done-recipes-container'>
+        {filteredFavoriteRecipes.length === 0 && <p>No recipe has been favorited yet...</p>}
         {(filteredFavoriteRecipes.length > 0) && filteredFavoriteRecipes.map((e, index) => (
           <div key={ e.id } className='done-recipe-card'>
             <Link to={ `/${e.type}s/${e.id}` }>
