@@ -52,6 +52,7 @@ function DoneRecipeBtn(props) {
 
           <button
             type="button"
+            className='doneRecipeBtn'
             onClick={ saveDoneRecipes }
             disabled={ ingredients.length !== ingredChecked.length }
             data-testid="finish-recipe-btn"

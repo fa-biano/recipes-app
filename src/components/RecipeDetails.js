@@ -72,8 +72,8 @@ function RecipesDetails() {
 
   return (
     <div>
-      <div className="recipe-details">
-        <h2>Recipe Details</h2>
+      <div>
+        <h2 className="recipe-page-title">Recipe Details</h2>
         <div className='recipes-details-container'>
           {
             selectedRecipe.map((recipe) => (

@@ -105,7 +105,7 @@ h2 { margin: 5px; }
 .instructions {
   background-color: rgb(14, 196, 165);
   font-size: small;
-  margin: 0 10px 10px 10px;
+  margin: 0 10px 45px 10px;
   padding: 10px;
 }
 
@@ -143,6 +143,7 @@ h2 { margin: 5px; }
 
 .movie-yt {
   width: 100%;
+  max-width: 560px;
 }
 
 .buttonFilter {
@@ -212,7 +213,7 @@ footer a {
   padding: 0 20px;
 }
 
-.recipe-details h2 {
+.recipe-page-title {
   background: rgb(14, 196, 165);
   margin: 0;
   padding: 10px;
@@ -278,6 +279,24 @@ footer a {
   width: 100%;
   color: black;
   font-weight: 700;
+}
+
+.doneRecipeBtn {
+  background: rgb(14, 196, 165);
+  bottom: 0;
+  border: none;
+  position: fixed;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 0;
+  width: 100%;
+  color: black;
+  font-weight: 700;
+}
+
+.doneRecipeBtn:disabled {
+  background: darkgray;
+  color: rgb(70, 70, 70);
 }
 
 .suggestions {

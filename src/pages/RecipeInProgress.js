@@ -76,37 +76,40 @@ function RecipeInProgress() {
 
   return (
     <div>
-      <h3>In Progress</h3>
+      <h3 className='recipe-page-title'>Recipe In Progress</h3>
+      <div className='recipes-details-container'>
+        {
+          selectedRecipe.map((recipe) => (
+            <div key={ recipe.idMeal ?? recipe.idDrink } className='done-recipe-card'>
+              <h3
+                data-testid="recipe-title"
+              >
+                { recipe.strMeal ?? recipe.strDrink }
+              </h3>
+              <img
+                // src={ recipe.strMealThumb ? recipe.strMealThumb : recipe.strDrinkThumb }
+                src={ recipe.strMealThumb ?? recipe.strDrinkThumb }
+                alt="recipe"
+                data-testid="recipe-photo"
+                width="300px"
+              />
+              <ShareAndFavorite />
+              <p data-testid="recipe-category">
+                { recipe.strAlcoholic
+                  ? `${recipe.strCategory} ${recipe.strAlcoholic}`
+                  : recipe.strCategory}
 
-      <ShareAndFavorite />
-      {
-        selectedRecipe.map((recipe) => (
-          <div key={ recipe.idMeal ?? recipe.idDrink }>
-            <h3
-              data-testid="recipe-title"
-            >
-              { recipe.strMeal ?? recipe.strDrink }
-            </h3>
-            <img
-              // src={ recipe.strMealThumb ? recipe.strMealThumb : recipe.strDrinkThumb }
-              src={ recipe.strMealThumb ?? recipe.strDrinkThumb }
-              alt="recipe"
-              data-testid="recipe-photo"
-              width="300px"
-            />
-            <p data-testid="recipe-category">
-              { recipe.strAlcoholic
-                ? `${recipe.strCategory} ${recipe.strAlcoholic}`
-                : recipe.strCategory}
+              </p>
+            </div>
+          ))
+        }
 
-            </p>
-          </div>
-        ))
-      }
+      </div>
 
       {
         (selectedRecipe.length > 0 && selectedRecipe[0].strYoutube) && (
           <iframe
+            className="movie-yt"
             data-testid="video"
             width="560"
             height="315"
@@ -123,7 +126,7 @@ function RecipeInProgress() {
         )
       }
 
-      <h3>Ingredients:</h3>
+      <h3 className='ingredients-title'>Ingredients:</h3>
       {
         ingredients.map((ingredient, index) => (
           <div
@@ -147,10 +150,10 @@ function RecipeInProgress() {
           </div>
         ))
       }
-      <h3>Intructions:</h3>
+      <h3 className='ingredients-title'>Intructions:</h3>
       {
         selectedRecipe.length > 0 && (
-          <p data-testid="instructions">{selectedRecipe[0].strInstructions}</p>
+          <p data-testid="instructions" className="instructions">{selectedRecipe[0].strInstructions}</p>
         )
       }
       <DoneRecipeBtn ingredChecked={ ingredChecked } />
