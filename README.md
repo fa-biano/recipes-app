@@ -16,8 +16,7 @@ Criar um app de receitas com layout para smartphones, onde seja possível consul
 * React Hooks (useState, useEffect, useContext, useParms, useHistory, etc)
 * Context API
 * Javascript
-* HTML
-* CSS
+* HTML e CSS
 * Testes com Jest e RTL 
 
 
